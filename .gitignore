@@ -25,3 +25,5 @@ get-models.js
 *.njsproj
 *.sln
 *.sw?
+
+.vercel
