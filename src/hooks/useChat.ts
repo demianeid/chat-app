@@ -78,7 +78,7 @@ export function useChat() {
         // ── Vision path: use Gemini ─────────────────────────────────────
         setHistory((prev) =>
           prev.map((msg) =>
-            msg.id === botMsgId ? { ...msg, status: '*(Analyzing image with Gemini Vision... 🔍)*' } : msg
+            msg.id === botMsgId ? { ...msg, status: 'Analyzing image...' } : msg
           )
         );
 
@@ -161,7 +161,7 @@ export function useChat() {
       if (retryImage) {
         setHistory((prev) =>
           prev.map((m) =>
-            m.id === botMsgId ? { ...m, status: '*(Analyzing image with Gemini Vision... 🔍)*' } : m
+            m.id === botMsgId ? { ...m, status: 'Analyzing image...' } : m
           )
         );
         const prompt = retryText || 'Analyze this image in detail and explain everything you see.';
