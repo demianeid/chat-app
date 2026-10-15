@@ -1,10 +1,12 @@
 import React from 'react';
 import { ThemeToggle } from './ThemeToggle';
 import type { ThemeMode } from '../hooks/useTheme';
+import brandIcon from '../assets/brand/icon.png';
 
 interface ChatHeaderProps {
   title?: string;
   subtitle?: string;
+  iconSrc?: string;
   iconClass?: string;
   onClear?: () => void;
   theme?: ThemeMode;
@@ -14,7 +16,8 @@ interface ChatHeaderProps {
 export const ChatHeader: React.FC<ChatHeaderProps> = ({
   title = 'AI Chat',
   subtitle = 'Your AI assistant',
-  iconClass = 'bi-stars',
+  iconSrc = brandIcon,
+  iconClass,
   onClear,
   theme,
   setTheme,
@@ -22,8 +25,12 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({
   return (
     <header className="bg-white dark:bg-gray-800 px-4 sm:px-6 py-4 sm:py-5 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between shrink-0 z-10 shadow-sm transition-colors duration-300">
       <div className="flex items-center min-w-0 mr-3">
-        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-teal-100 dark:bg-teal-900/40 flex items-center justify-center mr-3 sm:mr-4 shrink-0">
-          <i className={`${iconClass} text-teal-600 dark:text-teal-400 text-xl sm:text-2xl`}></i>
+        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-teal-50 dark:bg-teal-950/60 p-1.5 sm:p-2 border border-teal-100 dark:border-teal-800/50 flex items-center justify-center mr-3 sm:mr-4 shrink-0 shadow-xs">
+          {iconSrc ? (
+            <img src={iconSrc} alt="Brand Icon" className="w-full h-full object-contain" />
+          ) : (
+            <i className={`${iconClass || 'bi-stars'} text-teal-600 dark:text-teal-400 text-xl sm:text-2xl`}></i>
+          )}
         </div>
         <div className="min-w-0">
           <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white truncate">{title}</h1>
